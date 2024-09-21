@@ -1,3 +1,5 @@
+
+text/css bootstrap.min.css ( UTF-8 Unicode text, with very long lines )
 @charset "UTF-8";
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
@@ -497,7 +499,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: '— ';
+  content: '— ';
 }
 .img-fluid {
   max-width: 100%;
@@ -5493,9 +5495,40 @@ fieldset:disabled .btn {
   padding: 1rem 1rem;
   color: #212529;
 }
-.carousel {
-  position: relative;
+
+/* CAROUSEL VID */
+.hero-vid{
+  height: max-content;
 }
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 15px; /* Jarak di kanan dan kiri */
+  height: 100%; /* Sesuaikan dengan kontainer induknya */
+  width: 100%; /* Sesuaikan dengan kontainer induknya */
+}
+
+.centered-image {
+  max-width: 100%; /* Membatasi lebar maksimal agar tidak melebihi container */
+  height: auto; /* Menjaga rasio aspek gambar */
+  object-fit: cover; /* Agar gambar menyesuaikan kontainer */
+}
+
+.g-0{
+  padding: 50px;
+}
+
+  .carousel {
+    position: relative;
+    background-image: url('/storage/gambar/card-info.png');
+    background-size: cover; /* Menutupi seluruh area carousel */
+    background-position: center; /* Posisi gambar di tengah carousel */
+    background-repeat: no-repeat; /* Mencegah gambar diulang */
+    height: 100%; /* Atur tinggi sesuai kebutuhan */
+  }
+
 .carousel.pointer-event {
   touch-action: pan-y;
 }
@@ -5519,6 +5552,84 @@ fieldset:disabled .btn {
   backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
+/* Mengatur jarak antar elemen dalam kolom informasi */
+.col-6.col-md-4 .d-flex > div {
+  margin-bottom: 10px; /* Jarak bawah antar elemen */
+}
+
+/* Atur padding dan margin di dalam informasi */
+/* .bg-success {
+  padding: 15px; 
+*/
+
+
+/* Gaya gambar di dalam carousel item */
+.carousel-item img {
+  border-radius: 10px; /* Radius border gambar */
+  height: 100%; /* Atur tinggi gambar sesuai tinggi carousel */
+  width: 100%; /* Pastikan gambar memenuhi lebar item */
+  object-fit: cover; /* Menjaga proporsi gambar dan mengisi area tanpa distorsi */
+}
+
+/* Styling untuk box informasi umum */
+.info-box {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 15px; /* Padding luar dari info-box */
+  border-radius: 20px; /* Sesuaikan dengan border-radius gambar latar belakang */
+  min-height: 200px;
+}
+
+/* Styling elemen di dalam info-box */
+.info-box > div {
+  padding: 10px; /* Padding konsisten */
+  margin-bottom: 10px;
+  border-radius: 8px; /* Border-radius yang sama dengan gambar */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Hapus border pada elemen dalam info-box */
+.info-box .text-light {
+  border: none; /* Hapus border */
+  padding: 10px; /* Sesuaikan padding */
+  text-align: center;
+}
+
+.text-light-sholat{
+  background-image: url('/storage/gambar/card-info.png');
+  background-size: 437px 219px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+}
+
+.text-light-quran  {
+  display: flex;
+  align-items: center; /* Vertikal alignment */
+  justify-content: center; /* Horizontal alignment */
+  position: relative;
+  background-image: url('/storage/gambar/card-info.png');
+  background-size: 437px 219px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.text-content-quran {
+  text-align: left; /* Teks berada di sebelah kiri */
+  margin-right: 190px; /* Jarak antara teks dan gambar */
+}
+
+.alquran-img {
+  position: absolute;
+  bottom: 10px; /* Sesuaikan posisi gambar */
+  right: 10px;
+  width: 200px;
+  height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
     transition: none;

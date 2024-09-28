@@ -8,31 +8,51 @@
         <div class="container hero-vid px-0 pt-lg-5">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    @foreach($video as $index => $item)
+                    @foreach($artikel as $index => $item)
                         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $index }}"
                                 class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}"
                                 aria-label="Slide {{ $index + 1 }}"></button>
                     @endforeach
                 </div>
                 <div class="carousel-inner">
-                    @foreach($video as $item)
-                        <div class="carousel-item py-lg-4 {{ $loop->first ? 'active' : '' }}">
-                            <div class="text-center justify-content-center d-flex align-items-center image-container">
-                                <a href="/video/{{ $item->id }}" class="stretched-link">
-                                    <img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="{{ $item->judul }}" class="centered-image">
-                                    <div class="play-icon">
-                                        <i class="fa-duotone fa-circle-play"></i>
-                                    </div>
-                                </a>
+                    @foreach($artikel as $item)
+                        @if($item->video)
+                            <div class="carousel-item py-lg-4 {{ $loop->first ? 'active' : '' }}">
+                                <div class="text-center justify-content-center d-flex align-items-center image-container">
+                                    <a href="/artikel/{{ $item->judul_sub }}/{{ $item->id }}" class="stretched-link">
+                                        <img src="https://img.youtube.com/vi/{{ $item->gambar }}/maxresdefault.jpg" alt="{{ $item->judul }}" class="centered-image">
+                                        <div class="play-icon">
+                                            <i class="fa-duotone fa-circle-play"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="carousel-caption d-sm-block p-0">
+                                    <a href="/artikel/{{ $item->judul_sub }}/{{ $item->id }}"
+                                       class="shadow-lg badge text-decoration-none link-light fw-normal fs-5 stretched-link"
+                                       style="text-align: center; white-space: normal;">
+                                        {!! $item->judul !!}
+                                    </a>
+                                </div>
                             </div>
-                            <div class="carousel-caption d-sm-block p-0">
-                                <a href="/video/{{ $item->id }}"
-                                   class="shadow-lg badge text-decoration-none link-light fw-normal fs-5 stretched-link"
-                                   style="text-align: center; white-space: normal;">
-                                    {!! $item->judul !!}
-                                </a>
+                        @else
+                            <div class="carousel-item py-lg-4 {{ $loop->first ? 'active' : '' }}">
+                                <div class="text-center justify-content-center d-flex align-items-center image-container">
+                                    <a href="/artikel/{{ $item->judul_sub }}/{{ $item->id }}" class="stretched-link">
+                                        <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="{{ $item->judul }}" class="centered-image">
+                                        <div class="play-icon">
+                                            <i class="fa-duotone fa-circle-play"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="carousel-caption d-sm-block p-0">
+                                    <a href="/artikel/{{ $item->judul_sub }}/{{ $item->id }}"
+                                       class="shadow-lg badge text-decoration-none link-light fw-normal fs-5 stretched-link"
+                                       style="text-align: center; white-space: normal;">
+                                        {!! $item->judul !!}
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
                 <!-- <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -48,14 +68,14 @@
     </div>
 
 <!-- Kolom Informasi -->
-<div class="col-4 col-md-4 mb-4 info-box">
+<div class="col-12 col-md-4 mb-4 info-box">
     <div class="d-flex flex-column justify-content-around h-100 card-info">
         <!-- Jadwal Sholat -->
         <div class="text-light text-light-sholat p-3 rounded text-center" style="background-image: url('/storage/gambar/card-info.png'); background-size: 437px 219px;">
             <h4>JADWAL SHOLAT TERDEKAT</h4>
-            <h2>Isya'</h2>
-            <h1>18:50</h1>
-            <p><i class="fas fa-map-marker-alt"></i> Yogyakarta</p>
+            <h2>{{ strtoupper($judulSholat) }}</h2>
+            <h1>{{ $jadwalSholat }}</h1>
+            <p><i class="fas fa-map-marker-alt"></i> {{ $provinsi }}</p>
         </div>
 
         <!-- Al-Qur'an -->
@@ -125,4 +145,3 @@
         @endforeach
     </div>
 </main>
-

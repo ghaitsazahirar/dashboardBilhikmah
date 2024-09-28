@@ -5572,63 +5572,90 @@ fieldset:disabled .btn {
 }
 
 /* Styling untuk box informasi umum */
-.info-box {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 15px; /* Padding luar dari info-box */
-  border-radius: 20px; /* Sesuaikan dengan border-radius gambar latar belakang */
-  min-height: 200px;
-}
-
-/* Styling elemen di dalam info-box */
-.info-box > div {
-  padding: 10px; /* Padding konsisten */
-  margin-bottom: 10px;
-  border-radius: 8px; /* Border-radius yang sama dengan gambar */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Hapus border pada elemen dalam info-box */
-.info-box .text-light {
-  border: none; /* Hapus border */
-  padding: 10px; /* Sesuaikan padding */
-  text-align: center;
-}
-
-.text-light-sholat{
-  background-image: url('/storage/gambar/card-info.png');
-  background-size: 437px 219px;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-}
-
-.text-light-quran  {
+/* Container untuk Info-Box */
+.info-box-container {
   display: flex;
-  align-items: center; /* Vertikal alignment */
-  justify-content: center; /* Horizontal alignment */
-  position: relative;
-  background-image: url('/storage/gambar/card-info.png');
-  background-size: 437px 219px;
+  flex-wrap: wrap; /* Agar elemen bisa melipat ke baris berikutnya */
+  justify-content: space-around; /* Rata-rata antara elemen */
+  gap: 20px; /* Jarak antar card */
+}
+
+/* Info-Box Styling */
+.info-box {
+  flex: 1 1 calc(33.33% - 20px); /* Mengatur lebar dan fleksibilitas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  padding: 15px;
+  border-radius: 20px;
+  min-height: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek 3D */
 }
 
+/* Styling untuk Text Box */
+.text-light-sholat,
+.text-light-quran {
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Al-Qur'an Card Styling */
+.text-light-quran {
+  position: relative;
+  padding: 20px;
+}
+
+/* Teks di dalam Info-Card Al-Qur'an */
 .text-content-quran {
-  text-align: left; /* Teks berada di sebelah kiri */
-  margin-right: 190px; /* Jarak antara teks dan gambar */
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 1rem;
 }
 
+/* Gambar Al-Qur'an */
 .alquran-img {
   position: absolute;
-  bottom: 10px; /* Sesuaikan posisi gambar */
+  bottom: 10px;
   right: 10px;
-  width: 200px;
+  width: 80px;
   height: auto;
 }
+
+/* Media Query untuk Responsiveness */
+@media (max-width: 768px) {
+  .info-box {
+    flex: 1 1 calc(50% - 20px); /* Menjadi dua kolom pada layar menengah */
+    min-height: 180px; /* Sesuaikan tinggi minimal */
+  }
+
+  .alquran-img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-box {
+    flex: 1 1 100%; /* Menjadi satu kolom pada layar kecil */
+  }
+
+  .text-content-quran {
+    font-size: 0.9rem;
+  }
+
+  .alquran-img {
+    width: 50px;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
